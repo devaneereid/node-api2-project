@@ -125,8 +125,8 @@ router.delete("/:id", (req, res) => {
 
 // PUT Request
 router.put('/:id', (req, res) => {
-    const changes = req.body;
-    Data.update(req.params.id, changes)
+    // const changes = req.body;
+    Data.update(req.params.id, req.body)
         .then(post => {
             if (post) {
                 res.status(200).json(post);
@@ -139,7 +139,7 @@ router.put('/:id', (req, res) => {
         .catch(error => {
             console.log(error);
             res.status(500).json({
-                error: "The post information could not be modified.",
+                message: "The post information could not be modified.",
             });
         });
 });
